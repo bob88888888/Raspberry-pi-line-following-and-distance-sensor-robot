@@ -1,0 +1,37 @@
+from curses import *
+import os #import operating system commands
+
+screen = curses.initscr()
+curses.noecho()
+curses.cbreak()
+screen.keypad(True)
+
+try:
+    
+    while True:
+        char = screen.getch()
+        if char == ord("q"):
+            break
+        
+        if char == ord('S'):# if user entered capital S
+            os.system('sudo shutdown now')#Operating system command: shut down staight away
+            
+        elif char == curses.KEY_UP:
+            print ("Forward")
+            
+        elif char == curses.KEY_DOWN:
+            print ("Backward")
+            
+        elif char == curses.KEY_RIGHT:
+            print ("Right")
+            
+        elif char == curses.KEY_LEFT:
+            print ("Left")
+            
+        elif char == 10:
+            print ("Stop")
+            
+finally:
+    curses.nocbreak();screenkeypad(0);curses.echo()
+    curses.endwin()
+    GPIO.cleanup()
